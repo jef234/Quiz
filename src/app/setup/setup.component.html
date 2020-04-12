@@ -56,8 +56,8 @@
 
                     <div class="form-group">
                         <label for="trivia_difficulty">Select Difficulty: </label>
-                        <select name="trivia_difficulty" required class="form-control" [(ngModel)]="model.triviaDifficulty"
-                            (change)="completeStep($event.target.name)">
+                        <select name="trivia_difficulty" required class="form-control"
+                            [(ngModel)]="model.triviaDifficulty" (change)="completeStep($event.target.name)">
                             <option value="any">Any Difficulty</option>
                             <option value="easy">Easy</option>
                             <option value="medium">Medium</option>
@@ -75,8 +75,8 @@
                         </select>
                     </div>
 
-                    <button class="btn btn-primary btn-block" [disabled]="form.invalid" type="submit">Generate API
-                        URL</button>
+                    <button class="btn btn-primary btn-block" [disabled]="form.invalid" type="submit">Start
+                        Quiz</button>
                 </form>
             </div>
         </div>
