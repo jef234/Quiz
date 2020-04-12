@@ -9,7 +9,7 @@
                     <div class="form-group">
                         <label for="trivia_amount">Number of Questions:</label>
                         <select name="trivia_amount" required class="form-control"
-                            aria-describedby="triviaAmountHelpBlock"
+                            aria-describedby="triviaAmountHelpBlock" [(ngModel)]="model.triviaAmount"
                             (change)="updatePlayTime($event.target.value);completeStep($event.target.name)">
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -24,7 +24,7 @@
 
                     <div class="form-group">
                         <label for="trivia_category">Select Category: </label>
-                        <select name="trivia_category" required class="form-control"
+                        <select name="trivia_category" required class="form-control" [(ngModel)]="model.triviaCategory"
                             (change)="completeStep($event.target.name)">
                             <option value="any">Any Category</option>
                             <option value="9">General Knowledge</option>
@@ -56,7 +56,7 @@
 
                     <div class="form-group">
                         <label for="trivia_difficulty">Select Difficulty: </label>
-                        <select name="trivia_difficulty" required class="form-control"
+                        <select name="trivia_difficulty" required class="form-control" [(ngModel)]="model.triviaDifficulty"
                             (change)="completeStep($event.target.name)">
                             <option value="any">Any Difficulty</option>
                             <option value="easy">Easy</option>
@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label for="trivia_type">Select Type: </label>
-                        <select name="trivia_type" required class="form-control"
+                        <select name="trivia_type" required class="form-control" [(ngModel)]="model.triviaType"
                             (change)="completeStep($event.target.name)">&gt;
                             <option value="any">Any Type</option>
                             <option value="multiple">Multiple Choice</option>

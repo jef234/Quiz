@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { ModelSetupModule } from '../model-setup/model-setup.module';
 
 @Component({
   selector: 'app-setup',
@@ -6,6 +7,8 @@ import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
   styleUrls: ['./setup.component.css']
 })
 export class SetupComponent implements OnInit {
+
+  constructor() { }
   @Input() regPercentage: number;
   reg = 0;
   ta = false;
@@ -16,7 +19,7 @@ export class SetupComponent implements OnInit {
 
   @Output() regPercentageChange: EventEmitter<string> = new EventEmitter<string>();
 
-  constructor() { }
+  model = new ModelSetupModule('10', 'any', 'any', 'any');
 
   ngOnInit(): void {
   }

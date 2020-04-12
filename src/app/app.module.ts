@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { NavigationBarComponent } from './navigation-bar/navigation-bar.component';
 import { TestComponent } from './test/test.component';
 import { SetupComponent } from './setup/setup.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavigationBarComponent,
     TestComponent,
-    SetupComponent
+    SetupComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

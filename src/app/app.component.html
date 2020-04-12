@@ -10,8 +10,9 @@
     [ngStyle]="{'width':resultPercentage + '%'}" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
 </div>
 <div class="container mb-5">
-  <router-outlet></router-outlet>
   <app-setup [regPercentage]="regPercentage" (regPercentageChange)="onRegPercentageChange($event)"></app-setup>
   <app-test></app-test>
+
+  <router-outlet></router-outlet>
 
 </div>
