@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgForm, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -6,41 +7,38 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Quiz';
-  public Reg: number = 0;
-  public Reg_Percentage: number = 0;
-  public Game: number = 0;
-  public Game_Percentage: number = 0;
-  public Result: number = 0;
-  public Result_Percentage: number = 0;
-  public n: number = 1;
+  title = 'Quick Quiz';
+  reg = 0;
+  regPercentage = 0;
+  game = 0;
+  gamePercentage = 0;
+  result = 0;
+  resultPercentage = 0;
 
   public timeout() {
     setTimeout(() => {
-      if (this.Reg < 100){
-        this.Reg = this.Reg + 1;
-        this.Reg_Percentage= this.Reg/3
-      } else if(this.Game < 100){
-        this.Game = this.Game + 1;
-        this.Game_Percentage= this.Game/3
-      } else if(this.Result < 100){
-        this.Result = this.Result + 1;
-        this.Result_Percentage= this.Result/3
+      if (this.reg < 100) {
+        this.reg = this.reg + 1;
+        this.regPercentage = this.reg / 3;
+      } else if (this.game < 100) {
+        this.game = this.game + 1;
+        this.gamePercentage = this.game / 3;
+      } else if (this.result < 100) {
+        this.result = this.result + 1;
+        this.resultPercentage = this.result / 3;
       }
-      
-      if (this.Reg < 100 || this.Game < 100 || this.Result < 100){
+
+      if (this.reg < 100 || this.game < 100 || this.result < 100) {
         this.timeout();
       }
     }, 100);
   }
 
   constructor() {
-    console.log(`Fun1 Jef`);
-    let decimal: number=1000;
-
-    this.timeout();
-
-    console.log(`Fun1 Jef2`);
+    // this.timeout();
   }
 
+  onRegPercentageChange(value: number) {
+    this.regPercentage = value;
+  }
 }
