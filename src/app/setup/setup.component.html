@@ -1,15 +1,18 @@
 <div class="row">
     <div class="col-12">
-        <div class="card mt-3">
+        <div class="card">
             <div class="card-header bg-dark text-white">
                 Quiz Setup
             </div>
             <div class="card-body">
-                <form for action="" method="post" #form="ngForm" class="form-api">
+                Message from Service : {{quizApiUrl}} {{regPct}}
+                <form #form="ngForm" (submit)='submitForm(form)' method="post" class="form-api">
                     <div class="form-group">
                         <label for="trivia_amount">Number of Questions:</label>
                         <select name="trivia_amount" required class="form-control"
-                            aria-describedby="triviaAmountHelpBlock" [(ngModel)]="model.triviaAmount"
+                            aria-describedby="triviaAmountHelpBlock" [(ngModel)]="model.triviaAmount" #triviaAmount="ngModel" 
+                            [class.is-valid]="triviaAmount.touched && triviaAmount.valid && !triviaAmount.errors" 
+                            [class.is-invalid]="triviaAmount.touched && triviaAmount.invalid && triviaAmount.errors"
                             (change)="updatePlayTime($event.target.value);completeStep($event.target.name)">
                             <option value="10">10</option>
                             <option value="20">20</option>
@@ -24,7 +27,8 @@
 
                     <div class="form-group">
                         <label for="trivia_category">Select Category: </label>
-                        <select name="trivia_category" required class="form-control" [(ngModel)]="model.triviaCategory"
+                        <select name="trivia_category" required class="form-control" [(ngModel)]="model.triviaCategory" #triviaCategory="ngModel" 
+                        [class.is-valid]="triviaCategory.touched && triviaCategory.valid" [class.is-invalid]="triviaCategory.touched && triviaCategory.invalid"
                             (change)="completeStep($event.target.name)">
                             <option value="any">Any Category</option>
                             <option value="9">General Knowledge</option>
@@ -56,7 +60,8 @@
 
                     <div class="form-group">
                         <label for="trivia_difficulty">Select Difficulty: </label>
-                        <select name="trivia_difficulty" required class="form-control"
+                        <select name="trivia_difficulty" required class="form-control" #triviaDifficulty="ngModel" 
+                        [class.is-valid]="triviaDifficulty.touched && triviaDifficulty.valid" [class.is-invalid]="triviaDifficulty.touched && triviaDifficulty.invalid"
                             [(ngModel)]="model.triviaDifficulty" (change)="completeStep($event.target.name)">
                             <option value="any">Any Difficulty</option>
                             <option value="easy">Easy</option>
@@ -67,7 +72,8 @@
 
                     <div class="form-group">
                         <label for="trivia_type">Select Type: </label>
-                        <select name="trivia_type" required class="form-control" [(ngModel)]="model.triviaType"
+                        <select name="trivia_type" required class="form-control" [(ngModel)]="model.triviaType" #triviaType="ngModel" 
+                        [class.is-valid]="triviaType.touched && triviaType.valid" [class.is-invalid]="triviaType.touched && triviaType.invalid"
                             (change)="completeStep($event.target.name)">&gt;
                             <option value="any">Any Type</option>
                             <option value="multiple">Multiple Choice</option>

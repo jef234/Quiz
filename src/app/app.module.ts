@@ -9,6 +9,8 @@ import { NavigationBarComponent } from './navigation-bar/navigation-bar.componen
 import { TestComponent } from './test/test.component';
 import { SetupComponent } from './setup/setup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { SharedService } from './services/shared.service';
+import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     NavigationBarComponent,
     TestComponent,
     SetupComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    ProgressBarComponent
   ],
   imports: [
     BrowserModule,
@@ -24,7 +27,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [SharedService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

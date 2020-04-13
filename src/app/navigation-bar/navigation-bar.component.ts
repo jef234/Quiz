@@ -12,4 +12,7 @@ export class NavigationBarComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  closeMenu() {
+    document.getElementById('navbar-toggler').click();
+  }
 }

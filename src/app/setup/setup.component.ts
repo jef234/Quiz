@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { ModelSetupModule } from '../model-setup/model-setup.module';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-setup',
@@ -8,20 +11,22 @@ import { ModelSetupModule } from '../model-setup/model-setup.module';
 })
 export class SetupComponent implements OnInit {
 
-  constructor() { }
-  @Input() regPercentage: number;
+  regPct: number;
   reg = 0;
   ta = false;
   tc = false;
   td = false;
   tt = false;
   playTime = 20;
-
-  @Output() regPercentageChange: EventEmitter<string> = new EventEmitter<string>();
+  quizApiUrl: string;
 
   model = new ModelSetupModule('10', 'any', 'any', 'any');
 
+  constructor(private router: Router, private sharedService: SharedService) { }
+
   ngOnInit(): void {
+    this.sharedService.sharedQuizApiUrl.subscribe(value => this.quizApiUrl = value);
+    this.sharedService.sharedRegPct.subscribe(value => this.regPct = value);
   }
 
   updatePlayTime(value: number) {
@@ -43,11 +48,32 @@ export class SetupComponent implements OnInit {
       stepflag = 1;
       this.tt = true;
     }
-    if (stepflag === 1){
+    if (stepflag === 1) {
       this.reg = this.reg + 25;
-      this.regPercentage = this.reg / 3;
-      this.regPercentageChange.emit(`${this.regPercentage}`);
+      this.regPct = this.reg / 3;
+      this.sharedService.onRegPctChange(this.regPct);
     }
+  }
+
+  submitForm(form: NgForm) {
+    console.log(form.value);
+
+    const { trivia_amount, trivia_category, trivia_difficulty, trivia_type } = form.value;
+
+    this.quizApiUrl = `https://opentdb.com/api.php?amount=${trivia_amount}`;
+    if (trivia_category !== 'any') {
+      this.quizApiUrl += `&category=${trivia_category}`;
+    }
+    if (trivia_difficulty !== 'any') {
+      this.quizApiUrl += `&difficulty=${trivia_difficulty}`;
+    }
+    if (trivia_type !== 'any') {
+      this.quizApiUrl += `&type=${trivia_type}`;
+    }
+
+    this.sharedService.setQuizApiUrl(this.quizApiUrl);
+    this.sharedService.onRegPctChange(100 / 3);
+    this.router.navigate(['/play']);
   }
 
 }

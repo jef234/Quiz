@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../services/shared.service';
 
 @Component({
   selector: 'app-test',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TestComponent implements OnInit {
 
-  constructor() { }
+  message: string;
+
+  constructor(private sharedService: SharedService) { }
 
   ngOnInit(): void {
+    this.sharedService.sharedQuizApiUrl.subscribe(value => this.message = value);
   }
+
+
+
 
 }
