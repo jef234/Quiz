@@ -25,20 +25,20 @@ export class ProgressBarComponent implements OnInit {
 
   public initialiseProgressBar() {
     setTimeout(() => {
-      if (this.reg <= 100) {
+      if (this.reg < 100) {
         this.reg = this.reg + 1;
         this.regPct = this.reg / 3;
-      } else if (this.game <= 100) {
+      } else if (this.game < 100) {
         this.game = this.game + 1;
         this.gamePct = this.game / 3;
-      } else if (this.result <= 100) {
+      } else if (this.result < 100) {
         this.result = this.result + 1;
         this.resultPct = this.result / 3;
       }
 
-      if (this.reg <= 100 || this.game <= 100 || this.result <= 100) {
+      if (this.reg < 100 || this.game < 100 || this.result < 100) {
         this.initialiseProgressBar();
-      } else if (this.reg > 100 && this.game > 100 && this.result > 100) {
+      } else if (this.reg >= 100 && this.game >= 100 && this.result >= 100) {
         setTimeout(() => {
           this.reg = 0;
           this.regPct = 0;
@@ -48,7 +48,7 @@ export class ProgressBarComponent implements OnInit {
           this.resultPct = 0;
         }, 1000);
       }
-    }, 10);
+    }, 2.5);
   }
 
   onRegPctChange(value: number) {

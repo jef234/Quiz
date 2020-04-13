@@ -5,7 +5,6 @@
                 Quiz Setup
             </div>
             <div class="card-body">
-                Message from Service : {{quizApiUrl}} {{regPct}}
                 <form #form="ngForm" (submit)='submitForm(form)' method="post" class="form-api">
                     <div class="form-group">
                         <label for="trivia_amount">Number of Questions:</label>
@@ -81,7 +80,7 @@
                         </select>
                     </div>
 
-                    <button class="btn btn-primary btn-block" [disabled]="form.invalid" type="submit">Start
+                    <button class="btn btn-primary btn-block" id="btnSubmit" disabled="disabled" [disabled]="form.invalid" type="submit">Start
                         Quiz</button>
                 </form>
             </div>

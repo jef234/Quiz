@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ModelSetupModule } from '../model-setup/model-setup.module';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -22,11 +22,21 @@ export class SetupComponent implements OnInit {
 
   model = new ModelSetupModule('10', 'any', 'any', 'any');
 
-  constructor(private router: Router, private sharedService: SharedService) { }
+  constructor(private router: Router, private sharedService: SharedService) {
+  }
 
   ngOnInit(): void {
     this.sharedService.sharedQuizApiUrl.subscribe(value => this.quizApiUrl = value);
     this.sharedService.sharedRegPct.subscribe(value => this.regPct = value);
+
+    if (this.regPct === 0) {
+      setTimeout(() => {
+        (document.getElementById('btnSubmit') as HTMLInputElement).disabled = true;
+      }, 1);
+      setTimeout(() => {
+        (document.getElementById('btnSubmit') as HTMLInputElement).disabled = false;
+      }, 3500);
+    }
   }
 
   updatePlayTime(value: number) {
@@ -56,8 +66,6 @@ export class SetupComponent implements OnInit {
   }
 
   submitForm(form: NgForm) {
-    console.log(form.value);
-
     const { trivia_amount, trivia_category, trivia_difficulty, trivia_type } = form.value;
 
     this.quizApiUrl = `https://opentdb.com/api.php?amount=${trivia_amount}`;

@@ -11,6 +11,7 @@ import { SetupComponent } from './setup/setup.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { SharedService } from './services/shared.service';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
+import { QuizGuardService } from './services/quizGuard.service';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import { ProgressBarComponent } from './progress-bar/progress-bar.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [SharedService],
+  providers: [SharedService, QuizGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
