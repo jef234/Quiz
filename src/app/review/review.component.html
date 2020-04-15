@@ -1,6 +1,6 @@
-<span *ngIf="test" style="overflow: scroll;">
-    <div class="row" *ngFor="let results of test.results; index as i" id="parentDiv">
-        <div class="col-12">
+<span *ngIf="test">
+    <div class="row" *ngFor="let results of test.results; index as i">
+        <div class="col-12 unselectable">
         <div class="card mt-3 border border-secondary" id={{i+1}} appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)">
             <div class="card-header bg-dark text-white">
             Question : {{i+1}}
