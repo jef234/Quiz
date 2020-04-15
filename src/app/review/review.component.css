@@ -11,3 +11,10 @@
 .border-danger:hover {
   z-index: 1 !important;
 }
+
+.crop{
+  overflow: hidden;
+  white-space: nowrap;
+  color: #fcd670;
+  text-align: inherit;
+}
