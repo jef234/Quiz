@@ -15,6 +15,7 @@ import { QuizGuardService } from './services/quizGuard.service';
 import { TestService } from './services/test.service';
 import { ReviewComponent } from './review/review.component';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
+import { ScrollSpyDirective } from './directives/scroll-spy.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { SafeHtmlPipe } from './pipe/safe-html.pipe';
     PageNotFoundComponent,
     ProgressBarComponent,
     ReviewComponent,
-    SafeHtmlPipe
+    SafeHtmlPipe,
+    ScrollSpyDirective
   ],
   imports: [
     BrowserModule,

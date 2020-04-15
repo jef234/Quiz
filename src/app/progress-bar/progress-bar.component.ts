@@ -21,6 +21,8 @@ export class ProgressBarComponent implements OnInit {
     this.initialiseProgressBar();
     this.sharedService.sharedQuizApiUrl.subscribe(value => this.quizApiUrl = value);
     this.sharedService.sharedRegPct.subscribe(value => this.regPct = value);
+    this.sharedService.sharedGamePct.subscribe(value => this.gamePct = value);
+    this.sharedService.sharedResultPct.subscribe(value => this.resultPct = value);
   }
 
   public initialiseProgressBar() {

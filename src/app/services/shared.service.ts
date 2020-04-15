@@ -48,7 +48,7 @@ export class SharedService {
     this.gamePct.next(value);
   }
 
-  onresultPctChange(value: number) {
+  onResultPctChange(value: number) {
     this.resultPct.next(value);
   }
 }

@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class ReviewComponent implements OnInit {
   test: ITest;
   userAns: IUserAns;
+  reviewedTest = 0;
 
   constructor(private router: Router, private sharedService: SharedService) { }
 
@@ -36,4 +37,12 @@ export class ReviewComponent implements OnInit {
     return '';
   }
 
+  onSectionChange(element: any) {
+    this.reviewedTest += 1;
+    element.target.classList.remove('border');
+    element.target.classList.remove('border-secondary');
+    element.target.children[2].classList.remove('border');
+    element.target.children[2].classList.remove('border-secondary');
+    this.sharedService.onResultPctChange((this.reviewedTest * 100 / this.test.results.length) / 3);
+  }
 }

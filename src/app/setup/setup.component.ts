@@ -35,7 +35,7 @@ export class SetupComponent implements OnInit {
       }, 1);
       setTimeout(() => {
         (document.getElementById('btnSubmit') as HTMLInputElement).disabled = false;
-      }, 3000);
+      }, 3500);
     }
   }
 
@@ -81,6 +81,8 @@ export class SetupComponent implements OnInit {
 
     this.sharedService.setQuizApiUrl(this.quizApiUrl);
     this.sharedService.onRegPctChange(100 / 3);
+    this.sharedService.onGamePctChange(0);
+    this.sharedService.onResultPctChange(0);
     this.router.navigate(['/play']);
   }
 

@@ -1,7 +1,7 @@
-<span *ngIf="test">
-    <div class="row" *ngFor="let results of test.results; index as i">
+<span *ngIf="test" style="overflow: scroll;">
+    <div class="row" *ngFor="let results of test.results; index as i" id="parentDiv">
         <div class="col-12">
-        <div class="card mt-3">
+        <div class="card mt-3 border border-secondary" id={{i+1}} appScrollSpy [spiedTags]="['DIV']" (sectionChange)="onSectionChange($event)">
             <div class="card-header bg-dark text-white">
             Question : {{i+1}}
             </div>
@@ -9,11 +9,11 @@
             <h6 class="card-title">{{test.results[i].category}}</h6>
             <p class="card-text">{{test.results[i].question | safeHtml}}</p>
             </div>
-            <ul class="list-group list-group-flush">
-            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[0] | safeHtml)">{{test.results[i].incorrect_answers[0] | safeHtml}}</li>
-            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[1] | safeHtml)">{{test.results[i].incorrect_answers[1] | safeHtml}}</li>
-            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[2] | safeHtml)" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[2] | safeHtml}}</li>
-            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[3] | safeHtml)" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[3 | safeHtml]}}</li>
+            <ul class="list-group list-group-flush border border-secondary">
+                <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[0] | safeHtml)">{{test.results[i].incorrect_answers[0] | safeHtml}}</li>
+                <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[1] | safeHtml)">{{test.results[i].incorrect_answers[1] | safeHtml}}</li>
+                <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[2] | safeHtml)" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[2] | safeHtml}}</li>
+                <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer | safeHtml, test.results[i].incorrect_answers[3] | safeHtml)" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[3 | safeHtml]}}</li>
             </ul>
         </div>
         </div>

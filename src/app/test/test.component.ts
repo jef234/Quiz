@@ -17,10 +17,12 @@ export class TestComponent implements OnInit {
   test: ITest;
   userAns: IUserAns;
   currTest = 0;
+  gamePct = 0;
 
   constructor(private router: Router, private sharedService: SharedService, private testService: TestService) { }
 
   ngOnInit(): void {
+    this.sharedService.onGamePctChange(0);
     this.sharedService.sharedQuizApiUrl.subscribe(value => this.quizApiUrl = value);
     this.testService.getTests(this.quizApiUrl).subscribe((data: ITest) => {
       this.test = data;
@@ -62,9 +64,12 @@ export class TestComponent implements OnInit {
 
     if (this.currTest < this.test.results.length - 1) {
       this.currTest += 1;
+      this.sharedService.onGamePctChange((this.currTest / this.test.results.length * 100) / 3);
     } else {
       this.sharedService.setTest(this.test);
       this.sharedService.setUserAns(this.userAns);
+      this.sharedService.onGamePctChange(100 / 3);
+      this.sharedService.onResultPctChange(0);
       this.router.navigate(['/review']);
     }
   }
