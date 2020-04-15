@@ -18,6 +18,11 @@ export class TestComponent implements OnInit {
   userAns: IUserAns;
   currTest = 0;
   gamePct = 0;
+  timeLeft = 0;
+  perTimeLeft = 0;
+  timeMax = 100;
+  interval: any;
+  subTitle = 'Time left %';
 
   constructor(private router: Router, private sharedService: SharedService, private testService: TestService) { }
 
@@ -32,6 +37,8 @@ export class TestComponent implements OnInit {
       for (const result of this.test.results) {
         result.incorrect_answers = this.suffleAnswers(result.correct_answer, result.incorrect_answers);
       }
+      this.timeLeft = this.test.results.length * 2 * 60;
+      this.startTimer();
     });
     this.userAns = {
       score: 0,
@@ -72,6 +79,26 @@ export class TestComponent implements OnInit {
       this.sharedService.onResultPctChange(0);
       this.router.navigate(['/review']);
     }
+  }
+
+  startTimer() {
+    this.interval = setInterval(() => {
+      if (this.timeLeft > 0) {
+        this.timeLeft--;
+        this.perTimeLeft = this.timeLeft / (this.test.results.length * 2 * 60) * 100;
+      } else {
+        for (let i = this.userAns.answers.length; i < this.test.results.length; i++) {
+          this.userAns.answers[i] = '';
+        }
+        this.sharedService.setTest(this.test);
+        this.sharedService.setUserAns(this.userAns);
+        this.sharedService.onRegPctChange(100 / 3);
+        this.sharedService.onGamePctChange(100 / 3);
+        this.sharedService.onResultPctChange(0);
+        clearInterval(this.interval);
+        this.router.navigate(['/review']);
+      }
+    }, 1000);
   }
 
 }

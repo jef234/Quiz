@@ -1,4 +1,23 @@
 <span *ngIf="test">
+  <div class="row ">
+    <div class="col-3 offset-9">
+      <circle-progress class="text-right"
+        [percent]='perTimeLeft'
+        [maxPercent]='timeMax'
+        [radius]="35"
+        [outerStrokeWidth]="10"
+        [innerStrokeWidth]="0"
+        [outerStrokeColor]="'#78C000'"
+        [innerStrokeColor]="'#C7E596'"
+        [animation]="true"
+        [animationDuration]="300"
+        [renderOnClick]="false"
+        [showSubtitle]="true"
+        [subtitle]='subTitle'
+      ></circle-progress>
+    </div>
+  </div>
+  
   <div class="row unselectable">
     <div class="col-12">
       <div class="card mt-3">

@@ -41,10 +41,6 @@ export class ReviewComponent implements OnInit {
     this.reviewedTest += 1;
     element.target.classList.remove('border');
     element.target.classList.remove('border-secondary');
-    // for (element of element.target.children) {
-    //   element.classList.remove('border');
-    //   element.classList.remove('border-secondary');
-    // }
     this.sharedService.onResultPctChange((this.reviewedTest * 100 / this.test.results.length) / 3);
   }
 }

@@ -16,6 +16,7 @@ import { TestService } from './services/test.service';
 import { ReviewComponent } from './review/review.component';
 import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 import { ScrollSpyDirective } from './directives/scroll-spy.directive';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -27,13 +28,25 @@ import { ScrollSpyDirective } from './directives/scroll-spy.directive';
     ProgressBarComponent,
     ReviewComponent,
     SafeHtmlPipe,
-    ScrollSpyDirective
+    ScrollSpyDirective,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgCircleProgressModule.forRoot({
+      backgroundPadding: 0,
+      radius: 20,
+      outerStrokeWidth: 10,
+      innerStrokeWidth: 0,
+      imageHeight: 20,
+      imageWidth: 20,
+      showUnits: false,
+      showBackground: false,
+      showInnerStroke: false,
+      startFromZero: false
+    })
   ],
   providers: [SharedService, QuizGuardService, TestService],
   bootstrap: [AppComponent]
