@@ -1,0 +1,13 @@
+.list-group-item:focus, .list-group-item:hover {
+    z-index: 0;
+}
+.border-success,
+.border-danger {
+  z-index: 1 !important;
+}
+.border-success:focus,
+.border-danger:focus,
+.border-success:hover,
+.border-danger:hover {
+  z-index: 1 !important;
+}

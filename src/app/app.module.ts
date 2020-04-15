@@ -12,6 +12,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SharedService } from './services/shared.service';
 import { ProgressBarComponent } from './progress-bar/progress-bar.component';
 import { QuizGuardService } from './services/quizGuard.service';
+import { TestService } from './services/test.service';
+import { ReviewComponent } from './review/review.component';
+import { SafeHtmlPipe } from './pipe/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { QuizGuardService } from './services/quizGuard.service';
     TestComponent,
     SetupComponent,
     PageNotFoundComponent,
-    ProgressBarComponent
+    ProgressBarComponent,
+    ReviewComponent,
+    SafeHtmlPipe
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { QuizGuardService } from './services/quizGuard.service';
     FormsModule,
     HttpClientModule
   ],
-  providers: [SharedService, QuizGuardService],
+  providers: [SharedService, QuizGuardService, TestService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

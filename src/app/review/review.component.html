@@ -1,0 +1,21 @@
+<span *ngIf="test">
+    <div class="row" *ngFor="let results of test.results; index as i">
+      <div class="col-12">
+        <div class="card mt-3">
+          <div class="card-header bg-dark text-white">
+            Question : {{i+1}}
+          </div>
+          <div class="card-body">
+            <h6 class="card-title">{{test.results[i].category}}</h6>
+            <p class="card-text">{{test.results[i].question | safeHtml}}</p>
+          </div>
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer, test.results[i].incorrect_answers[0])">{{test.results[i].incorrect_answers[0] | safeHtml}}</li>
+            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer, test.results[i].incorrect_answers[1])">{{test.results[i].incorrect_answers[1] | safeHtml}}</li>
+            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer, test.results[i].incorrect_answers[2])" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[2] | safeHtml}}</li>
+            <li class="list-group-item" [ngClass]="highlightAns(userAns.answers[i], test.results[i].correct_answer, test.results[i].incorrect_answers[3])" *ngIf="test.results[i].type==='multiple'">{{test.results[i].incorrect_answers[3 | safeHtml]}}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </span>

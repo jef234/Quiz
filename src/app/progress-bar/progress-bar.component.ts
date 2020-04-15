@@ -38,7 +38,7 @@ export class ProgressBarComponent implements OnInit {
 
       if (this.reg < 100 || this.game < 100 || this.result < 100) {
         this.initialiseProgressBar();
-      } else if (this.reg >= 100 && this.game >= 100 && this.result >= 100) {
+      } else if (this.reg === 100 && this.game === 100 && this.result === 100) {
         setTimeout(() => {
           this.reg = 0;
           this.regPct = 0;

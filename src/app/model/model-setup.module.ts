@@ -11,5 +11,5 @@ import { CommonModule } from '@angular/common';
 })
 export class ModelSetupModule {
   constructor(@Inject(String) public triviaAmount: string, @Inject(String) public triviaCategory: string,
-              @Inject(String)public triviaDifficulty: string, @Inject(String) public triviaType: string) { }
+              @Inject(String) public triviaDifficulty: string, @Inject(String) public triviaType: string) { }
 }

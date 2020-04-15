@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModelSetupModule } from '../model-setup/model-setup.module';
+import { ModelSetupModule } from '../model/model-setup.module';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SharedService } from '../services/shared.service';
@@ -35,7 +35,7 @@ export class SetupComponent implements OnInit {
       }, 1);
       setTimeout(() => {
         (document.getElementById('btnSubmit') as HTMLInputElement).disabled = false;
-      }, 3500);
+      }, 3000);
     }
   }
 

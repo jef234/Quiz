@@ -1,19 +1,25 @@
-<div class="row">
+<span *ngIf="test">
+  <div class="row">
     <div class="col-12">
       <div class="card mt-3">
         <div class="card-header bg-dark text-white">
-          Question : 1
+          Question : {{currTest+1}}
         </div>
         <div class="card-body">
-          <h5 class="card-title">Science & Nature</h5>
-          <p class="card-text">How many degrees Fahrenheit is 100 degrees Celsius? </p>
+          <h6 class="card-title">{{test.results[currTest].category}}</h6>
+          <p class="card-text">{{test.results[currTest].question | safeHtml}}</p>
         </div>
         <ul class="list-group list-group-flush">
-          <button type="button" class="list-group-item btn btn-light btn-block">Cras justo odio</button>
-          <button type="button" class="list-group-item btn btn-light btn-block">Dapibus ac facilisis in</button>
-          <button type="button" class="list-group-item btn btn-light btn-block">Vestibulum at eros</button>
-          <button type="button" class="list-group-item btn btn-light btn-block">Dapibus ac facilisis in</button>
+          <button type="button" (click)="validateAnswer($event.target.innerText)"
+            class="list-group-item btn btn-light btn-block">{{test.results[currTest].incorrect_answers[0] | safeHtml}}</button>
+          <button type="button" (click)="validateAnswer($event.target.innerText)"
+            class="list-group-item btn btn-light btn-block">{{test.results[currTest].incorrect_answers[1] | safeHtml}}</button>
+          <button type="button" *ngIf="test.results[currTest].type==='multiple'" (click)="validateAnswer($event.target.innerText)"
+            class="list-group-item btn btn-light btn-block">{{test.results[currTest].incorrect_answers[2] | safeHtml}}</button>
+          <button type="button" *ngIf='test.results[currTest].type==="multiple"' (click)="validateAnswer($event.target.innerText)"
+            class="list-group-item btn btn-light btn-block">{{test.results[currTest].incorrect_answers[3] | safeHtml}}</button>
         </ul>
       </div>
     </div>
   </div>
+</span>
