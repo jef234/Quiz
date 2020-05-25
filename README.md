@@ -1,27 +1,19 @@
 # Quiz
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.1.1.
+Quick Quiz is a lightweight and responsive single page Angular 9 web app hosted in GitHub.
+Users can choose different parameters and take up the quiz. i.e Number of Questions, Category, Difficulty, Type. Data is retrieved as REST API service requests. Services, Pipes, Form validation, Routing, Directive and different Components are implemented in this project.
 
-## Development server
+### Technologies
+Typescript, Angular v9, Bootstrap, HTML and CSS.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### App Hosted Websites
+[Github](https://jef234.github.io/Quiz)
 
-## Code scaffolding
+### Install
+```npm install```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Run
+```npm run start```
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+### Build
+```npm run build```
